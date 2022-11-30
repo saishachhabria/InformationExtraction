@@ -48,6 +48,10 @@ def remove_stop_words(text):
 def normalize(text):
     return text.lower()
 
+def remove_acronyms(text):
+    text = re.sub(r"\b[A-Z\.]{2,}\b", "", text) 
+    return text
+
 def clear_unicode(text):
     text_encode = text.encode(encoding="ascii", errors="ignore")
     # decoding the text
@@ -87,6 +91,7 @@ def clean_data(documents):
         # documents[i] = stemming(documents[i])
         documents[i] = clear_unicode(documents[i])
         documents[i] = remove_special_chars(documents[i])
+        documents[i] = remove_acronyms(documents[i])
 
     return documents
         

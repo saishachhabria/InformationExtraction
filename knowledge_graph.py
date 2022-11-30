@@ -42,14 +42,19 @@ def build_knowledge_graph():
             file_name += str
             print(file_name)
 
-        df = pd.read_csv(path +"data/output/kg/"+file_name+".txt-out.csv")
+        df = pd.read_csv(path +"data/output/kg/"+file_name+".txt-out.csv", header=None)
         
         # Parse every row present in the intermediate csv file
+        
         triplet = set()
+        
         for i, j in df.iterrows():
+            
             j[0] = j[0].strip()
+            j[2] = j[2].strip()
+            
             # If entity is present in entity set, only then parse futrther
-            if j[0] in entity_set or j[2] in entity_set:
+            if j[0] in entity_set: #or j[2] in entity_set:
                 added = False
                 e2_sentence = j[2].split(' ')
                 # Check every word in entity2, and add a new row triplet if it is present in entity2
@@ -61,6 +66,19 @@ def build_knowledge_graph():
                 if not added:
                     _ = (entities[j[0]], j[0] ,j[1] ,'O', j[2])
                     triplet.add(_)
+            
+            if j[2] in entity_set:
+                added = False
+                e2_sentence = j[0].split(' ')
+                # Check every word in entity1, and add a new row triplet if it is present in entity1
+                for entity in e2_sentence:
+                    if entity in entity_set:
+                        _ = (entities[j[0]], j[0], j[1], entities[entity], j[2])
+                        triplet.add(_)
+                        added = True
+                if not added:
+                    _ = ('O', j[0] ,j[1] ,'O', entities[j[2]])
+                    triplet.add(_)
         
         # Convert the pandas dataframe into csv
         processed_pd = pd.DataFrame(list(triplet),columns=['Type', 'Entity1', 'Relationship', 'Type', 'Entity2'])
@@ -68,6 +86,6 @@ def build_knowledge_graph():
 
         print('\nInput -->', path +"data/output/kg/"+file_name+".txt-out.csv")
         print('Output -->', path + 'data/result/' + file.split("/")[-1].split(".")[0] + '.csv')
-        # print("Processed " + file.split("/")[-1])
+        print("Processed " + file.split("/")[-1])
 
     print("\nFiles processed and saved")
