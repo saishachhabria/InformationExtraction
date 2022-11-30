@@ -4,17 +4,17 @@ import pickle
 import subprocess
 import pandas as pd
 
-path = os.getcwd()
+path = os.getcwd() + '/'
 
 def extract_relations():
     print('Relationship Extraction Started')
-    # !chmod 755 -R /content/drive/MyDrive/ColabNotebooks/BOS/Textract/stanford-openie/
 
     for f in glob.glob(path + "data/output/kg/*.txt"):        
         print("\nExtracting relations for " + f.split("/")[-1])
         os.chdir(path + '/stanford-openie')
         p = subprocess.Popen(['./process_large_corpus.sh',f,f + '-out.csv'], stdout=subprocess.PIPE)
         output, err = p.communicate()
+        print(err)
         print('Input --> ',f)
         print('Output -->', f + '-out.csv')
     print('\nRelation Extraction Completed')
@@ -73,7 +73,7 @@ def build_knowledge_graph():
                 # Check every word in entity1, and add a new row triplet if it is present in entity1
                 for entity in e2_sentence:
                     if entity in entity_set:
-                        _ = (entities[j[0]], j[0], j[1], entities[entity], j[2])
+                        _ = (entities[entity], j[0], j[1], entities[j[2]], j[2])
                         triplet.add(_)
                         added = True
                 if not added:

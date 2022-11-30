@@ -1,5 +1,6 @@
 import os
 import nltk
+import pickle
 
 # For NER
 import spacy
@@ -14,7 +15,7 @@ import json
 from stanfordcorenlp import StanfordCoreNLP
 import neuralcoref
 
-path = os.getcwd()
+path = os.getcwd() + '/'
 
 # Named Entity Recognition
 
@@ -141,7 +142,7 @@ def build_components(documents, file_list):
         print('\nWorking on', file_list[j].split('/')[-1])
         print("Using Spacy for NER & Resolving Coreferences")
 
-        doc = resolve_coreferences_neural(doc)
+        # doc = resolve_coreferences_neural(doc)
 
         for i in range(0, len(options)):
             if(options[i] == "nltk"):

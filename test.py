@@ -20,3 +20,5 @@ except: os.system("python3.7 -m pip install neuralcoref")
 
 try: import en_core_web_lg
 except: os.system("python3.7 -m spacy download en_core_web_lg")
+
+os.system('sudo apt install openjdk-8-jre-headless')

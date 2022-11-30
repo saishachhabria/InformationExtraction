@@ -11,8 +11,7 @@ from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
 nltk.download('punkt')
 
-path = os.getcwd()
-print(os.listdir(path))
+path = os.getcwd() + '/'
 
 # Data Loading
 
@@ -22,7 +21,7 @@ def read_files():
     """
     
     file_list = []
-    for f in glob.glob(path + '/data/input/*'):
+    for f in glob.glob(path + 'data/input/*'):
         file_list.append(f)
 
     documents = []
