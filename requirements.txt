@@ -1,0 +1,5 @@
+pandas
+glob
+spacy==2.1.0
+stanfordcorenlp
+neuralcoref
