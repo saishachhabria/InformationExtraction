@@ -80,3 +80,18 @@ The tasks performed in the backend are:
 
 **knowledge_graph.py** - Performs Relationshp Extraction, Post Processing and outputs the Knowledge Graph 
 ![Knowledge graph](images/knowledge_graph.jpg)
+
+
+## **Usage**
+
+1.  Ensure Java is installed and Python version 3.7 
+2.  Setup the environment   
+
+        python3 setup.py
+
+3.  Make sure input files are placed in data/input/
+
+4.  Run the knowledge graph extractor
+       
+        python3 main.py
+

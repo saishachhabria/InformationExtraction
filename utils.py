@@ -9,7 +9,8 @@ import nltk
 from nltk.stem.porter import PorterStemmer
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
-nltk.download('punkt')
+# nltk.download('punkt')
+import time
 
 path = os.getcwd() + '/'
 
@@ -19,7 +20,7 @@ def read_files():
     """
     Reads data from files in the data/input directory
     """
-    
+    print('\n\nData Loading - Reading unstructured text\n')
     file_list = []
     for f in glob.glob(path + 'data/input/*'):
         file_list.append(f)
@@ -27,12 +28,16 @@ def read_files():
     documents = []
 
     for file in file_list:    
+        print('Loading file', file.split('/')[-1])
         with open(file,"r") as f:
             lines = f.read().splitlines()
         doc = ""
         for line in lines:
             doc += line
         documents.append(doc)
+        time.sleep(1)
+    
+    print('\n--------------------------------------------------------------------------------\n')
     
     return (documents, file_list)
 
@@ -66,7 +71,6 @@ def remove_special_chars(text):
     text = re.sub("Mr", "", text)
     text = re.sub("Mrs", "", text)
     text = re.sub("Ms", "", text)
-    text = re.sub("MFP", "", text) # Removes hashtags
     return text
 
 def remove_punctuations(text):
@@ -85,12 +89,18 @@ def clean_data(documents):
     Performs predefined set of cleaning operations on the data
     """
     
+    print('Data cleaning\n')
     for i in range(len(documents)):
         # documents[i] = remove_stop_words(documents[i])
         # documents[i] = stemming(documents[i])
         documents[i] = clear_unicode(documents[i])
+        print('\nCleaning file', str(i+1)  + '.txt')
+        print('Removing unicode')
+        print('Removing special characters')
+        print('Resolving acronyms')
         documents[i] = remove_special_chars(documents[i])
         documents[i] = remove_acronyms(documents[i])
-
+        time.sleep(2)
+    print('\n--------------------------------------------------------------------------------\n')
     return documents
         

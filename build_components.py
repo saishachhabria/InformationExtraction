@@ -14,7 +14,9 @@ from pprint import pprint
 import json
 from stanfordcorenlp import StanfordCoreNLP
 import neuralcoref
+import gc
 
+gc.collect()
 path = os.getcwd() + '/'
 
 # Named Entity Recognition
@@ -109,8 +111,7 @@ class NltkNER:
 
 # Coreference Resolution (Using neuralcoref by spaCy)
 
-def resolve_coreferences_neural(doc):#,stanford_core_nlp_path,ner,verbose):
-    # nlp = spacy.load('en_core_web_lg')
+def resolve_coreferences_neural(doc):
     nlp = en_core_web_lg.load()
     neuralcoref.add_to_pipe(nlp)
     processed_text = nlp(doc)
@@ -135,11 +136,12 @@ def build_components(documents, file_list):
 
     named_entities = None
 
+    print('Building components - Entity extraction, named entity recognition and coreference resolution\n')
     for j in range(len(documents)):
 
         doc = documents[j]
 
-        print('\nWorking on', file_list[j].split('/')[-1])
+        print('\nWorking on file', file_list[j].split('/')[-1])
         print("Using Spacy for NER & Resolving Coreferences")
 
         # doc = resolve_coreferences_neural(doc)
@@ -178,3 +180,5 @@ def build_components(documents, file_list):
 
         print('Output pickle file -->', op_pickle_filename)
         print('Output text file -->', op_filename)
+    print('\n--------------------------------------------------------------------------------\n')
+    

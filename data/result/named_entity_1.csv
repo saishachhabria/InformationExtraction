@@ -1,0 +1,48 @@
+Type,Entity1,Relationship,Type,Entity2
+PERSON,Barbara Lee, was served as ,O,Director
+O,he, immigrated to ,O,GPE
+PERSON,Wun, served from ,O,1999 to 2006
+O,Barbara, joined ,O,ORG
+PERSON,Wun Tian Dian, was ,GPE,born in Guangzhou in 1952
+PERSON,Wun Tian Dian, was ,O,born
+PERSON,Wun Tian Dian, was born in ,DATE,1952
+O,she, Previously worked in ,O,GPE
+O,he, Thereafter joined Finance Company Limited in ,O,DATE
+PERSON,Barbara Lee, was ,ORG,served as Director of Bank during 2006 to 2012
+ORG,Global business, of Head is ,DATE,2004-2007
+O,he, joined Bloomberg for ,O,DATE
+O,he, joined Finance Company Limited in ,O,DATE
+PERSON,Barbara Lee, was served during ,O,2006 to 2012
+O,he, joined Bloomberg In ,O,DATE
+CARDINAL,1 year, is in ,ORG,University of Hong Kong
+O,she, worked for ,O,ORG
+PERSON,Wun, also served as ,O,Deputy Chairman of Airy Group
+PERSON,Wun, has ,O,positions
+PERSON,Wun, served as ,O,Deputy Chairman of Airy Group
+PERSON,Wun, to ,O,net worth
+DATE,1 year, is in ,O,University of Hong Kong
+PERSON,Wun, also served from ,DATE,1999 to 2006
+PERSON,Barbara Lee, was ,O,served as Director during 2006 to 2012
+PERSON,Wun, invest equities over ,DATE,20 years
+O,Bachelor Degree, is in ,O,DATE
+O,He, returned to ,O,GPE
+PERSON,Wun, invest equities over ,O,20 years
+O,she, Previously worked for ,O,ORG
+O,Barbara, joined Bank since ,O,DATE
+O,Barbara Lee, was served during ,O,DATE
+PERSON,Wun, also served from ,O,1999 to 2006
+PERSON,Wun Tian Dian, was born in ,GPE,Guangzhou
+PERSON,Wun, served as ,O,Director of Airy xFairy Developments Limited
+PERSON,Barbara Lee, was served as ,ORG,Director of Bank
+O,Barbara, born in ,O,DATE
+PERSON,Wun Tian Dian, was ,DATE,born in Guangzhou in 1952
+O,he, Thereafter joined ,O,ORG
+PERSON,Barbara Lee, was ,O,served
+PERSON,Wun, served as ,O,Director
+PERSON,Wun, also served as ,O,Deputy Chairman
+PERSON,Wun, served as ,O,Deputy Chairman
+PERSON,Wun, served from ,DATE,1999 to 2006
+O,He, studied in ,O,ORG
+O,she, worked in ,O,GPE
+O,he, joined ,O,ORG
+PERSON,Wun, invest ,O,equities

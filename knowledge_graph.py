@@ -7,21 +7,23 @@ import pandas as pd
 path = os.getcwd() + '/'
 
 def extract_relations():
-    print('Relationship Extraction Started')
+    
+    print('Relationship Extraction\n')
 
     for f in glob.glob(path + "data/output/kg/*.txt"):        
         print("\nExtracting relations for " + f.split("/")[-1])
         os.chdir(path + '/stanford-openie')
         p = subprocess.Popen(['./process_large_corpus.sh',f,f + '-out.csv'], stdout=subprocess.PIPE)
         output, err = p.communicate()
-        print(err)
         print('Input --> ',f)
         print('Output -->', f + '-out.csv')
-    print('\nRelation Extraction Completed')
+    print('\n--------------------------------------------------------------------------------\n')
+    
 
 
 def build_knowledge_graph():
-     # Create a list of pickle file names
+    # Create a list of pickle file names
+    print('Postprocessing and building knowledge graph\n')
     pickles = []
     for file in glob.glob(path + "data/output/ner/*.pickle"):
         pickles.append(file)
@@ -43,7 +45,6 @@ def build_knowledge_graph():
             print(file_name)
 
         df = pd.read_csv(path +"data/output/kg/"+file_name+".txt-out.csv", header=None)
-        
         # Parse every row present in the intermediate csv file
         
         triplet = set()
@@ -89,3 +90,6 @@ def build_knowledge_graph():
         print("Processed " + file.split("/")[-1])
 
     print("\nFiles processed and saved")
+
+    print('\n--------------------------------------------------------------------------------\n')
+    

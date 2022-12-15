@@ -1,1 +1,16 @@
 cd /mnt/c/Users/saish/Documents/Github
+
+Issues:
+1.  [Fixed] Environment ---> make sure java is installed
+
+2.  Need Python 3.7 <= and Spacy 2.1 >= 
+
+3.  Need Ubuntu with decent memory allocation (preferably GPU)
+
+4.  Preprocessing (Data Cleaning)
+    Text simplification --- most implementations need gpu --- long time to train
+
+5.  Coreference resolution --> ran into a memory issue
+
+6.  [Fixed] Change .process.sh ---> depending on how python is called on the system
+  
